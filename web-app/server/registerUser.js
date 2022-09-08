@@ -17,7 +17,7 @@ let connectionFile = yaml.safeLoad(fileContents);
 // const ccp = JSON.parse(ccpJSON);
 
 
-exports.registerUser = async function(userName) {
+exports.registerUser = async function(userid) {
     try {
 
         // Create a new file system based wallet for managing identities.
@@ -26,9 +26,9 @@ exports.registerUser = async function(userName) {
         console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (userExists) {
-            console.log(`An identity for the user ${userName} already exists in the wallet`);
+            console.log(`An identity for the user ${userid} already exists in the wallet`);
             return;
         }
 
@@ -49,14 +49,14 @@ exports.registerUser = async function(userName) {
         const adminIdentity = gateway.getCurrentIdentity();
 
         // Register the user, enroll the user, and import the new identity into the wallet.
-        const secret = await ca.register({enrollmentID: userName, role: 'client' }, adminIdentity);
-        const enrollment = await ca.enroll({ enrollmentID: userName, enrollmentSecret: secret });
+        const secret = await ca.register({enrollmentID: userid, role: 'client' }, adminIdentity);
+        const enrollment = await ca.enroll({ enrollmentID: userid, enrollmentSecret: secret });
         const userIdentity = X509WalletMixin.createIdentity('Org1MSP', enrollment.certificate, enrollment.key.toBytes());
-        wallet.import(userName, userIdentity);
-        console.log(`Successfully registered and enrolled admin user ${userName} and imported it into the wallet`);
+        wallet.import(userid, userIdentity);
+        console.log(`Successfully registered and enrolled admin user ${userid} and imported it into the wallet`);
 
     } catch (error) {
-        console.error(`Failed to register user ${userName}: ${error}`);
+        console.error(`Failed to register user ${userid}: ${error}`);
         process.exit(1);
     }
 }

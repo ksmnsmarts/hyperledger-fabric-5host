@@ -15,7 +15,7 @@ const caCertPath = path.resolve(__dirname, '..', '..', '..', '..', 'fabric-sampl
 const caCert = fs.readFileSync(caCertPath, 'utf8');
 
 // 계약서 생성에 필요한 계약서 전체 갯수 불러오기
-exports.totalNumberContracts = async function (userName) {
+exports.totalNumberContracts = async function (userid) {
     try {
         console.log('starting to TotalNumberContracts')
         var response = {};
@@ -24,16 +24,16 @@ exports.totalNumberContracts = async function (userName) {
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (!userExists) {
-            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('An identity for the user ' + userid + ' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
-            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            response.error = 'An identity for the user ' + userid + ' does not exist in the wallet. Register ' + userid + ' first';
             return response;
         }
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(connectionFile, { wallet, identity: userid, discovery: { enabled: true, asLocalhost: true } });
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
         // Get the contract from the network.
@@ -50,7 +50,7 @@ exports.totalNumberContracts = async function (userName) {
     }
 }
 // 계약서 생성
-exports.createContract = async function (key, contract_name, contract_contents, contract_companyA, contract_companyB, contract_date, contract_period, contract_contract_name , contract_contract_buffer, state, userName) {
+exports.createContract = async function (key, contract_name, contract_contents, contract_companyA, contract_companyB, contract_date, contract_period, contract_contract_name , contract_contract_buffer, state, userid) {
     try {
         var response = {};
         // Create a new file system based wallet for managing identities.
@@ -58,17 +58,17 @@ exports.createContract = async function (key, contract_name, contract_contents, 
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (!userExists) {
-            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('An identity for the user ' + userid + ' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
-            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            response.error = 'An identity for the user ' + userid + ' does not exist in the wallet. Register ' + userid + ' first';
             return response;
         }
         // Create a new gateway for connecting to our peer node.
         console.log('we here in CreateContract')
         const gateway = new Gateway();
-        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(connectionFile, { wallet, identity: userid, discovery: { enabled: true, asLocalhost: true } });
 
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
@@ -76,7 +76,7 @@ exports.createContract = async function (key, contract_name, contract_contents, 
         const contract = network.getContract('contract');
         // Submit the specified transaction.
         // CreateContract transaction - requires 5 argument, ex: ('CreateContract', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
-        await contract.submitTransaction('createContract', key, contract_name, contract_contents, contract_companyA, contract_companyB, contract_date, contract_period, contract_contract_name, contract_contract_buffer, state, userName);
+        await contract.submitTransaction('createContract', key, contract_name, contract_contents, contract_companyA, contract_companyB, contract_date, contract_period, contract_contract_name, contract_contract_buffer, state, userid);
         console.log('Transaction has been submitted');
         // Disconnect from the gateway.
         await gateway.disconnect();
@@ -90,7 +90,7 @@ exports.createContract = async function (key, contract_name, contract_contents, 
 }
 
 // 계약서 업로드
-exports.uploadContract = async function (key, contract_contract_name, contract_contract_buffer, userName) {
+exports.uploadContract = async function (key, contract_contract_name, contract_contract_buffer, userid) {
     try {
         var response = {};
         // Create a new file system based wallet for managing identities.
@@ -98,17 +98,17 @@ exports.uploadContract = async function (key, contract_contract_name, contract_c
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (!userExists) {
-            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('An identity for the user ' + userid + ' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
-            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            response.error = 'An identity for the user ' + userid + ' does not exist in the wallet. Register ' + userid + ' first';
             return response;
         }
         // Create a new gateway for connecting to our peer node.
         console.log('we here in uploadContract')
         const gateway = new Gateway();
-        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(connectionFile, { wallet, identity: userid, discovery: { enabled: true, asLocalhost: true } });
 
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
@@ -130,7 +130,7 @@ exports.uploadContract = async function (key, contract_contract_name, contract_c
 }
 
 // 계약서 수정
-exports.modifyContract = async function (key, new_contract_name, new_contract_contents, new_contract_companyB, new_contract_receiver, new_contract_date, new_contract_period, userName) {
+exports.modifyContract = async function (key, new_contract_name, new_contract_contents, new_contract_companyB, new_contract_receiver, new_contract_date, new_contract_period, userid) {
     try {
         var response = {};
         // Create a new file system based wallet for managing identities.
@@ -138,16 +138,16 @@ exports.modifyContract = async function (key, new_contract_name, new_contract_co
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (!userExists) {
-            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('An identity for the user ' + userid + ' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
-            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            response.error = 'An identity for the user ' + userid + ' does not exist in the wallet. Register ' + userid + ' first';
             return response;
         }
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(connectionFile, { wallet, identity: userid, discovery: { enabled: true, asLocalhost: true } });
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
         // Get the contract from the network.
@@ -167,33 +167,33 @@ exports.modifyContract = async function (key, new_contract_name, new_contract_co
     }
 }
 // 유저 아이디에 따른 목록 표시
-exports.queryContractList = async function (userName) {
+exports.queryContractList = async function (userid) {
     try {
         console.log('starting to QueryContractList')
-        console.log(userName);
+        console.log(userid);
         var response = {};
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), 'wallet');
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (!userExists) {
-            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('An identity for the user ' + userid + ' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
-            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            response.error = 'An identity for the user ' + userid + ' does not exist in the wallet. Register ' + userid + ' first';
             return response;
         }
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(connectionFile, { wallet, identity: userid, discovery: { enabled: true, asLocalhost: true } });
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
         // Get the contract from the network.
         const contract = network.getContract('contract');
         // Evaluate the specified transaction.
         // QueryContractList transaction - requires no arguments, ex: ('QueryContractList')
-        const result = await contract.evaluateTransaction('queryContractList', userName);
+        const result = await contract.evaluateTransaction('queryContractList', userid);
         console.log(`Transaction has been evaluated`);
         // console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
         return result;
@@ -204,7 +204,7 @@ exports.queryContractList = async function (userName) {
     }
 }
 // 계약서 상세 조회
-exports.selectContract = async function (key, userName) {
+exports.selectContract = async function (key, userid) {
     try {
         console.log('starting to SelectContract')
         var response = {};
@@ -213,17 +213,17 @@ exports.selectContract = async function (key, userName) {
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (!userExists) {
-            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('An identity for the user ' + userid + ' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
-            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            response.error = 'An identity for the user ' + userid + ' does not exist in the wallet. Register ' + userid + ' first';
             return response;
         }
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(connectionFile, { wallet, identity: userid, discovery: { enabled: true, asLocalhost: true } });
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
         // Get the contract from the network.
@@ -313,7 +313,7 @@ exports.selectContract = async function (key, userName) {
     }
 }
 // 계약서 전송
-exports.sendContract = async function (key, contract_signA, contract_receiver, state, userName, contract_contract_name) {
+exports.sendContract = async function (key, contract_signA, contract_receiver, state, userid, contract_contract_name) {
     try {
         var response = {};
         // Create a new file system based wallet for managing identities.
@@ -321,11 +321,11 @@ exports.sendContract = async function (key, contract_signA, contract_receiver, s
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (!userExists) {
-            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('An identity for the user ' + userid + ' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
-            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            response.error = 'An identity for the user ' + userid + ' does not exist in the wallet. Register ' + userid + ' first';
             return response;
         }
 
@@ -339,7 +339,7 @@ exports.sendContract = async function (key, contract_signA, contract_receiver, s
 
         // extract certificate info from wallet
         // 지갑에 있는 개인키 불러오기 
-        const walletContents = await wallet.export(userName);
+        const walletContents = await wallet.export(userid);
         const userPrivateKey = walletContents.privateKey;
 
         // 암호화
@@ -355,7 +355,7 @@ exports.sendContract = async function (key, contract_signA, contract_receiver, s
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(connectionFile, { wallet, identity: userid, discovery: { enabled: true, asLocalhost: true } });
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
         // Get the contract from the network.
@@ -376,7 +376,7 @@ exports.sendContract = async function (key, contract_signA, contract_receiver, s
 }
 
 // 계약서 완료
-exports.signedContract = async function (key, contract_signB, state, userName, contract_contract_name) {
+exports.signedContract = async function (key, contract_signB, state, userid, contract_contract_name) {
     try {
         var response = {};
         // Create a new file system based wallet for managing identities.
@@ -384,9 +384,9 @@ exports.signedContract = async function (key, contract_signB, state, userName, c
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(userid);
         if (!userExists) {
-            console.log(`An identity for the user ${userName} does not exist in the wallet`);
+            console.log(`An identity for the user ${userid} does not exist in the wallet`);
             console.log('Run the registerUser.js application before retrying');
             return;
         }
@@ -400,7 +400,7 @@ exports.signedContract = async function (key, contract_signB, state, userName, c
 
         // extract certificate info from wallet
         // 지갑에 있는 개인키 불러오기 
-        const walletContents = await wallet.export(userName);
+        const walletContents = await wallet.export(userid);
         const userPrivateKey = walletContents.privateKey;
 
         // 암호화
@@ -414,7 +414,7 @@ exports.signedContract = async function (key, contract_signB, state, userName, c
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(connectionFile, { wallet, identity: userid, discovery: { enabled: true, asLocalhost: true } });
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
         // Get the contract from the network.

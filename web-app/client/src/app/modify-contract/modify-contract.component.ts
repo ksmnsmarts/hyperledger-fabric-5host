@@ -26,11 +26,14 @@ export class ModifyContractComponent implements OnInit {
       console.log(carsArray);        
             this.cars = carsArray;
     });
+    console.log(this.cars.key)
   }
 
   async onSubmit(data) {
     console.log(data);
-    return await this.apiService.changeCarOwner(this.cars.key, data.contract_name, data.contract_contents, data.contract_companyB, data.contract_receiver, data.contract_date, data.contract_period, this._info.id);
+    
+    await this.apiService.changeCarOwner(this.cars.key, data.contract_name, data.contract_contents, data.contract_companyB, data.contract_receiver, data.contract_date, data.contract_period, this._info.id);
+    this.router.navigate(['main']);
   }
 
 }

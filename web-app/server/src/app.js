@@ -78,7 +78,7 @@ app.post("/signUp", (req, res) => {
                         newData.author = ("user" + userCount).toString();
                         console.log(userCount);
                         newData.save((error, response) => {
-                            registerUser.registerUser(newData.name);
+                            registerUser.registerUser(newData.id);
                             if (error) {
                                 console.log(error)
                             }
@@ -301,9 +301,9 @@ app.get('/download/:fileName', async (req, res) => {
 
 // 작성자, 받은자 기준으로 목록조회
 app.post('/queryAllCars', (req, res) => {
-    const userName = req.body.userName;
-    console.log(userName);
-    network.queryContractList(userName)
+    const userId = req.body.userName;
+    console.log(userId);
+    network.queryContractList(userId)
         .then((response) => {
             res.send(response);
         });

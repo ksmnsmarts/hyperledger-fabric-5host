@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
 
      // 클라이언트의 localStorage에 저장된 Token 값을 get
      this._info = localStorage.getItem('Auth_Token');
-     console.log("Token_info >>>>> ", this._info);
+    //  console.log("Token_info >>>>> ", this._info);
      // 서버에서 Token 값을 가져오는 것이 아니라 
      // localStorage에 저장된 Token 값을 decode 해주어서
      // access.html의 _info.id, _info.name을 출력
