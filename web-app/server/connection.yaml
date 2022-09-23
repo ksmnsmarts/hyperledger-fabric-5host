@@ -73,7 +73,7 @@ organizations:
     certificateAuthorities:
     - ca.org1.example.com
     adminPrivateKey:
-      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/priv_sk
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/ca32289b263de37ee062fcb7ba4103fa8bf7380223bd0232b07bf0501a26ecd6_sk
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem
   Org2:
@@ -84,7 +84,7 @@ organizations:
     certificateAuthorities:
     - ca.org2.example.com
     adminPrivateKey:
-      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/priv_sk
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/3e973c33e6cf1d603e6bcfa190d3dd83bc93a40c877e3bac3c85158ef554e620_sk
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/Admin@org2.example.com-cert.pem
   Org3:
@@ -95,7 +95,7 @@ organizations:
     certificateAuthorities:
     - ca.org3.example.com
     adminPrivateKey:
-      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/keystore/priv_sk
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/keystore/1fb5ab506a26fa57610e8e09fdcfaddd4c0890dbe40b9415071e595a1a266cd1_sk
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/signcerts/Admin@org3.example.com-cert.pem
   Org4:
@@ -106,7 +106,7 @@ organizations:
     certificateAuthorities:
     - ca.org4.example.com
     adminPrivateKey:
-      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp/keystore/priv_sk
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp/keystore/dd059be5aadb1f2b38419e4bbb7baecb8a41788d5d9b061288824a49bc19e69a_sk
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp/signcerts/Admin@org4.example.com-cert.pem
   Org5:
@@ -117,7 +117,7 @@ organizations:
     certificateAuthorities:
     - ca.org5.example.com
     adminPrivateKey:
-      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org5.example.com/users/Admin@org5.example.com/msp/keystore/priv_sk
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org5.example.com/users/Admin@org5.example.com/msp/keystore/84ddbd88a1eab69791a741700d4361ecba9dacc536d3b7f2e4595c45cb0b876e_sk
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org5.example.com/users/Admin@org5.example.com/msp/signcerts/Admin@org5.example.com-cert.pem
 
@@ -131,28 +131,28 @@ orderers:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
   orderer2.example.com:
-    url: grpcs://localhost:8050
+    url: grpcs://localhost:7050
     grpcOptions:
       ssl-target-name-override: orderer2.example.com
     tlsCACerts:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
   orderer3.example.com:
-    url: grpcs://localhost:9050
+    url: grpcs://localhost:7050
     grpcOptions:
       ssl-target-name-override: orderer3.example.com
     tlsCACerts:
       path: ./../fabric-samples/raft-5node-swarm/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
   orderer4.example.com:
-    url: grpcs://localhost:10050
+    url: grpcs://localhost:7050
     grpcOptions:
       ssl-target-name-override: orderer4.example.com
     tlsCACerts:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
   orderer5.example.com:
-    url: grpcs://localhost:11050
+    url: grpcs://localhost:7050
     grpcOptions:
       ssl-target-name-override: orderer5.example.com
     tlsCACerts:

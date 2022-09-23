@@ -27,20 +27,20 @@ echo $UPDATED_KEYSTORE_ORG_1
 
 echo 'updating connection.yaml Org1 adminPrivateKey path with' ${UPDATED_KEYSTORE_ORG_1}
 
-sed -i -e "s|Admin@org1.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_1|g" connection.yaml
+sed -i '' "s|Admin@org1.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_1|g" connection.yaml
 
 echo 'updating connection.yaml Org2 adminPrivateKey path with' ${UPDATED_KEYSTORE_ORG_2}
 
-sed -i -e "s|Admin@org2.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_2|g" connection.yaml
+sed -i '' "s|Admin@org2.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_2|g" connection.yaml
 
 echo 'updating connection.yaml Org3 adminPrivateKey path with' ${UPDATED_KEYSTORE_ORG_3}
 
-sed -i -e "s|Admin@org3.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_3|g" connection.yaml
+sed -i '' "s|Admin@org3.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_3|g" connection.yaml
 
 echo 'updating connection.yaml Org4 adminPrivateKey path with' ${UPDATED_KEYSTORE_ORG_4}
 
-sed -i -e "s|Admin@org4.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_4|g" connection.yaml
+sed -i '' "s|Admin@org4.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_4|g" connection.yaml
 
 echo 'updating connection.yaml Org5 adminPrivateKey path with' ${UPDATED_KEYSTORE_ORG_5}
 
-sed -i -e "s|Admin@org5.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_5|g" connection.yaml
+sed -i '' "s|Admin@org5.example.com/msp/keystore/.*|$UPDATED_KEYSTORE_ORG_5|g" connection.yaml
