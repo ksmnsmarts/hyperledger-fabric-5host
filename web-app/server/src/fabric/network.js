@@ -152,6 +152,20 @@ exports.modifyContract = async function (key, new_contract_name, new_contract_co
         const network = await gateway.getNetwork('mychannel');
         // Get the contract from the network.
         const contract = network.getContract('contract');
+        console.log('------------------------userid-----------------------')
+        console.log(userid)
+        console.log('-----------------------------------------------')
+        console.log('------------------------gateway-----------------------')
+        console.log(gateway)
+        console.log('-----------------------------------------------')
+        console.log('-------------------------network----------------------')
+        console.log(network)
+        console.log('-----------------------------------------------')
+        console.log('-------------------------contract----------------------')
+        console.log(contract)
+        console.log('-----------------------------------------------')
+        // Submit the specified transaction.
+        console.log('-----------------------------------------------')
         // Submit the specified transaction.
         // ModifyContract transaction - requires 2 args , ex: ('ModifyContract', 'CAR10', 'Dave')
         await contract.submitTransaction('modifyContract', key, new_contract_name, new_contract_contents, new_contract_companyB, new_contract_receiver, new_contract_date, new_contract_period);
@@ -159,6 +173,7 @@ exports.modifyContract = async function (key, new_contract_name, new_contract_co
         // Disconnect from the gateway.
         await gateway.disconnect();
         response.msg = 'ModifyContract Transaction has been submitted';
+        console.log('-----------------------------------------------')
         return response;
     } catch (error) {
         console.error(`Failed to submit transaction: ${error}`);
@@ -360,13 +375,27 @@ exports.sendContract = async function (key, contract_signA, contract_receiver, s
         const network = await gateway.getNetwork('mychannel');
         // Get the contract from the network.
         const contract = network.getContract('contract');
+        console.log('------------------------userid-----------------------')
+        console.log(userid)
+        console.log('-----------------------------------------------')
+        console.log('------------------------gateway-----------------------')
+        console.log(gateway)
+        console.log('-----------------------------------------------')
+        console.log('-------------------------network----------------------')
+        console.log(network)
+        console.log('-----------------------------------------------')
+        console.log('-------------------------contract----------------------')
+        console.log(contract)
+        console.log('-----------------------------------------------')
         // Submit the specified transaction.
+        console.log('-----------------------------------------------')
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR10', 'Dave')
         await contract.submitTransaction('sendContract', key, contract_signA, contract_receiver, state, sigValueBase64);
         console.log('Transaction has been submitted');
         // Disconnect from the gateway.
         await gateway.disconnect();
         response.msg = 'sendContract Transaction has been submitted';
+        console.log('-----------------------------------------------')
         return response;
     } catch (error) {
         console.error(`Failed to submit transaction: ${error}`);

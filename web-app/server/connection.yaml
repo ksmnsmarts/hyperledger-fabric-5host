@@ -73,7 +73,7 @@ organizations:
     certificateAuthorities:
     - ca.org1.example.com
     adminPrivateKey:
-      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/e60e7e0422c1d3d7b82b383a49a6bb981233649a81edc1d02f6b02dc1c9b1737_sk
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/ca32289b263de37ee062fcb7ba4103fa8bf7380223bd0232b07bf0501a26ecd6_sk
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem
   Org2:
@@ -84,7 +84,7 @@ organizations:
     certificateAuthorities:
     - ca.org2.example.com
     adminPrivateKey:
-      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/63659480d27e6f7a33c352f66e3b3f820a9a434e7b3e3be84fa2e150411aed9a_sk
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/3e973c33e6cf1d603e6bcfa190d3dd83bc93a40c877e3bac3c85158ef554e620_sk
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/Admin@org2.example.com-cert.pem
   Org3:
@@ -95,7 +95,11 @@ organizations:
     certificateAuthorities:
     - ca.org3.example.com
     adminPrivateKey:
+<<<<<<< HEAD
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/keystore/f5bd4ab43350b0930abec8a00f6bc3b6d81a3e1032c971730eff31a58b73b408_sk
+=======
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/keystore/1fb5ab506a26fa57610e8e09fdcfaddd4c0890dbe40b9415071e595a1a266cd1_sk
+>>>>>>> jeonwoon
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/signcerts/Admin@org3.example.com-cert.pem
   Org4:
@@ -106,7 +110,11 @@ organizations:
     certificateAuthorities:
     - ca.org4.example.com
     adminPrivateKey:
+<<<<<<< HEAD
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp/keystore/8303a1fc8a768d167f730f8dcb1fa349fb583c70ca42a9a24d62e5137192e62c_sk
+=======
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp/keystore/dd059be5aadb1f2b38419e4bbb7baecb8a41788d5d9b061288824a49bc19e69a_sk
+>>>>>>> jeonwoon
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp/signcerts/Admin@org4.example.com-cert.pem
   Org5:
@@ -117,7 +125,7 @@ organizations:
     certificateAuthorities:
     - ca.org5.example.com
     adminPrivateKey:
-      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org5.example.com/users/Admin@org5.example.com/msp/keystore/300f7d46e8ff31461ca89b6d70af0fec4babd4c37cc93b5558a436798b39a9f7_sk
+      path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org5.example.com/users/Admin@org5.example.com/msp/keystore/84ddbd88a1eab69791a741700d4361ecba9dacc536d3b7f2e4595c45cb0b876e_sk
     signedCert:
       path: ../../fabric-samples/raft-5node-swarm/crypto-config/peerOrganizations/org5.example.com/users/Admin@org5.example.com/msp/signcerts/Admin@org5.example.com-cert.pem
 
